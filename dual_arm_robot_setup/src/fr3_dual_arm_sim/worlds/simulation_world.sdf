@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="simulation_world">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://table_with_pedestal</uri>
+      <pose>0 0 0 0 0 0</pose>  <!-- adjustment needed -->
+    </include>
+  </world>
+</sdf>
