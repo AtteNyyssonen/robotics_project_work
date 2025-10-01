@@ -6,19 +6,20 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>model://table_with_pedestal/meshes/table_with_pedestal.stl</uri>
-            <scale>1 1 1</scale> <!-- adjustments needed -->
+            <uri>model://table_with_pedestal/meshes/table_with_pedestal.STL</uri>
+            <scale>0.001 0.001 0.001</scale> <!-- adjustments needed -->
           </mesh>
         </geometry>
         <material>
           <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse> 
         </material>
       </visual>
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>model://table_with_pedestal/meshes/table_with_pedestal.stl</uri>
-            <scale>1 1 1</scale>
+            <uri>model://table_with_pedestal/meshes/table_with_pedestal.STL</uri>
+            <scale>0.001 0.001 0.001</scale>
           </mesh>
         </geometry>
       </collision>

@@ -6,8 +6,7 @@ find_package(rclcpp REQUIRED)
 find_package(ros_gz REQUIRED)
 find_package(xacro REQUIRED)
 
-# Include dependencies for FR3 / FRANKA
-find_package(ros2_franka REQUIRED)
+# FR3 / Franka dependencies
 find_package(franka_description REQUIRED)
 find_package(franka_hardware REQUIRED)
 find_package(franka_gripper REQUIRED)
@@ -21,10 +20,7 @@ find_package(moveit_planners_ompl REQUIRED)
 find_package(moveit_ros_visualization REQUIRED)
 find_package(joint_trajectory_controller REQUIRED)
 find_package(moveit_simple_controller_manager REQUIRED)
-find_package(rvsz REQUIRED)  # likely rviz2
-
-# If you have nodes or executables, link them etc.
-# (In the minimal scaffolding we may not have native code)
+find_package(rviz2 REQUIRED)
 
 install(DIRECTORY launch worlds models urdf
   DESTINATION share/${PROJECT_NAME}

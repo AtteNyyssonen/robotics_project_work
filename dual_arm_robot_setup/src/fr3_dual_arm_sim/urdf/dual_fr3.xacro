@@ -7,7 +7,7 @@
       prefix="fr3_a/" 
       add_base_link="true"
       use_gazebo_control="true"
-      ) />
+      />
   </group>
 
   <!-- Second arm -->
@@ -16,7 +16,7 @@
       prefix="fr3_b/" 
       add_base_link="true"
       use_gazebo_control="true"
-      ) />
+      />
   </group>
 
   <link name="fr3_a_base">
