@@ -1,47 +1,41 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="dual_fr3">
-  <xacro:include filename="$(find franka_description)/robots/fr3/fr3.urdf.xacro"/>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_fr3">
 
-  <group ns="fr3_a">
-    <xacro:fr3 
-      prefix="fr3_a/" 
-      add_base_link="true"
-      use_gazebo_control="true"
-      />
-  </group>
+  <!-- Include FR3 wrapper -->
+  <xacro:include filename="$(find franka_description)/robots/fr3/fr3.urdf.xacro" />
 
-  <!-- Second arm -->
-  <group ns="fr3_b">
-    <xacro:fr3 
-      prefix="fr3_b/" 
-      add_base_link="true"
-      use_gazebo_control="true"
-      />
-  </group>
+  <!-- Macro to spawn one FR3 with prefix -->
+  <xacro:macro name="spawn_fr3" params="prefix parent_link *origin">
 
-  <link name="fr3_a_base">
-  </link>
-  <joint name="fr3_a_base_joint" type="fixed">
-    <parent link="world"/>
-    <child link="fr3_a_base"/>
-    <origin xyz="0.5 0.3 0.75" rpy="0 0 0"/>
-  </joint>
-  <joint name="fr3_a_to_robot" type="fixed">
-    <parent link="fr3_a_base"/>
-    <child link="fr3_a_base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
+    <joint name="${prefix}_world_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent_link}"/>
+      <child link="${prefix}fr3_link0"/>
+    </joint>
 
-  <link name="fr3_b_base">
-  </link>
-  <joint name="fr3_b_base_joint" type="fixed">
-    <parent link="world"/>
-    <child link="fr3_b_base"/>
-    <origin xyz="-0.5 -0.3 0.75" rpy="0 0 0"/>
-  </joint>
-  <joint name="fr3_b_to_robot" type="fixed">
-    <parent link="fr3_b_base"/>
-    <child link="fr3_b_base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
+    <!-- Call the franka_robot wrapper -->
+    <xacro:franka_robot 
+        arm_id="fr3"
+        arm_prefix="${prefix}"
+        description_pkg="franka_description"
+        joint_limits="${xacro.load_yaml('$(find franka_description)/robots/fr3/joint_limits.yaml')}"
+        inertials="${xacro.load_yaml('$(find franka_description)/robots/fr3/inertials.yaml')}"
+        kinematics="${xacro.load_yaml('$(find franka_description)/robots/fr3/kinematics.yaml')}"
+        dynamics="${xacro.load_yaml('$(find franka_description)/robots/fr3/dynamics.yaml')}"
+        safety_distance="0.03"
+        with_sc="false"
+        gazebo="false"
+        connected_to=""/>
+  </xacro:macro>
+
+  <!-- Left arm -->
+  <xacro:spawn_fr3 prefix="left" parent_link="base">
+    <origin xyz="0 0.4 0" rpy="0 0 0"/>
+  </xacro:spawn_fr3>
+
+  <!-- Right arm -->
+  <xacro:spawn_fr3 prefix="right" parent_link="base">
+    <origin xyz="0 -0.4 0" rpy="0 0 0"/>
+  </xacro:spawn_fr3>
+
 </robot>
