@@ -64,36 +64,10 @@ def generate_launch_description():
         output='screen'
     )
     
-    # --- ros2_control ---
-    # After the robot is spawned, load and start the controllers for both arms
-    load_controllers = []
-    for arm in ['left', 'right']:
-        load_controllers.extend([
-            Node(
-                package="controller_manager",
-                executable="spawner",
-                arguments=[f"{arm}_joint_state_broadcaster", "-c", "/controller_manager"],
-            ),
-            Node(
-                package="controller_manager",
-                executable="spawner",
-                arguments=[f"{arm}_joint_trajectory_controller", "-c", "/controller_manager"],
-            ),
-        ])
-        
-    # Ensure controllers are loaded after spawning the robot
-    controller_event_handler = RegisterEventHandler(
-        event_handler=OnProcessExit(
-            target_action=spawn_entity,
-            on_exit=load_controllers,
-        )
-    )
-
     return LaunchDescription([
         world_path_arg,
         gz_sim,
         gz_bridge,
         robot_state_publisher,
         spawn_entity,
-        controller_event_handler,
     ])
