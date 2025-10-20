@@ -9,12 +9,9 @@ from launch_ros.actions import Node, PushRosNamespace
 import xacro
 
 def generate_launch_description():
-    # --- Paths ---
-    # Replace 'my_robot_description' with the name of your package
     pkg_my_robot_description = get_package_share_directory('fr3_dual_arm_sim')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
 
-    # --- Launch Arguments ---
     world_path_arg = DeclareLaunchArgument(
         'world_path',
         default_value=os.path.join(pkg_my_robot_description, 'worlds', 'simulation_world.sdf'),
@@ -22,7 +19,6 @@ def generate_launch_description():
     )
 
     # --- Robot Description ---
-    # Process the dual_fr3.xacro file
     xacro_file = os.path.join(pkg_my_robot_description, 'urdf', 'dual_fr3.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     robot_description = {'robot_description': robot_description_config.toxml()}
@@ -51,14 +47,11 @@ def generate_launch_description():
     )
 
     # --- ROS-Gazebo Bridge ---
-    # This bridge is essential for ros2_control to communicate with Gazebo
     gz_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
-            # Clock
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
-            # Joint states for both arms
             '/world/dual_fr3/joint_state_broadcaster/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',
         ],
         output='screen'
