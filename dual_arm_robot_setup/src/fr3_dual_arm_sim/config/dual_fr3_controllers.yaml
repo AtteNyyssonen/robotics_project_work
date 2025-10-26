@@ -12,13 +12,13 @@ left_franka_state_controller:
     robot_ip: "dont_care"
     # All joint names must match the <joint> tags in the XACRO
     joints:
-      - left_joint1
-      - left_joint2
-      - left_joint3
-      - left_joint4
-      - left_joint5
-      - left_joint6
-      - left_joint7
+      - left_fr3_joint1
+      - left_fr3_joint2
+      - left_fr3_joint3
+      - left_fr3_joint4
+      - left_fr3_joint5
+      - left_fr3_joint6
+      - left_f3_joint7
 
 right_franka_state_controller:
   type: franka_state_controller/FrankaStateController
@@ -26,25 +26,25 @@ right_franka_state_controller:
     arm_id: fr3 
     robot_ip: "dont_care"
     joints:
-      - right_joint1
-      - right_joint2
-      - right_joint3
-      - right_joint4
-      - right_joint5
-      - right_joint6
-      - right_joint7
+      - right_fr3_joint1
+      - right_fr3_joint2
+      - right_fr3_joint3
+      - right_fr3_joint4
+      - right_fr3_joint5
+      - right_fr3_joint6
+      - right_fr3_joint7
 
 left_joint_trajectory_controller:
   type: joint_trajectory_controller/JointTrajectoryController
   ros__parameters:
     joints:
-      - left_joint1
-      - left_joint2
-      - left_joint3
-      - left_joint4
-      - left_joint5
-      - left_joint6
-      - left_joint7
+      - left_fr3_joint1
+      - left_fr3_joint2
+      - left_fr3_joint3
+      - left_fr3_joint4
+      - left_fr3_joint5
+      - left_fr3_joint6
+      - left_fr3_joint7
     command_interfaces:
       - position
     state_interfaces:
@@ -55,13 +55,13 @@ right_joint_trajectory_controller:
   type: joint_trajectory_controller/JointTrajectoryController
   ros__parameters:
     joints:
-      - right_joint1
-      - right_joint2
-      - right_joint3
-      - right_joint4
-      - right_joint5
-      - right_joint6
-      - right_joint7
+      - right_fr3_joint1
+      - right_fr3_joint2
+      - right_fr3_joint3
+      - right_fr3_joint4
+      - right_fr3_joint5
+      - right_fr3_joint6
+      - right_fr3_joint7
     command_interfaces:
       - position
     state_interfaces:
