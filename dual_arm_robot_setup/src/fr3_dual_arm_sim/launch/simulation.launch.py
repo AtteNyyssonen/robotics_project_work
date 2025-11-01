@@ -20,7 +20,7 @@ def generate_launch_description():
         description='Path to the Gazebo world file (.sdf)'
     )
 
-    xacro_file = os.path.join(pkg_my_robot_description, 'urdf', 'dual_fr3.xacro')
+    xacro_file = os.path.join(pkg_my_robot_description, 'urdf', 'dual_fr3.urdf.xacro')
     robot_description_config = xacro.process_file(xacro_file)
     robot_description = {'robot_description': robot_description_config.toxml()}
 
