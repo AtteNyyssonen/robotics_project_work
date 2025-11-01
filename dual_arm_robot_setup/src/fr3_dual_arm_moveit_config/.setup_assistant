@@ -5,9 +5,9 @@ moveit_setup_assistant_config:
   srdf:
     relative_path: config/dual_fr3.srdf
   package_settings:
-    author_name: ""
-    author_email: ""
-    generated_timestamp: 1760956004
+    author_name: example
+    author_email: example@example.com
+    generated_timestamp: 1761991990
   control_xacro:
     command:
       - position

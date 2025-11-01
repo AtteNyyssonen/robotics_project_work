@@ -22,7 +22,7 @@ find_package(joint_trajectory_controller REQUIRED)
 find_package(moveit_simple_controller_manager REQUIRED)
 find_package(rviz2 REQUIRED)
 
-install(DIRECTORY launch worlds models urdf config
+install(DIRECTORY launch worlds models urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

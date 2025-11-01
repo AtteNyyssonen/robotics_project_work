@@ -13,7 +13,6 @@ import yaml
 def generate_launch_description():
     pkg_my_robot_description = get_package_share_directory('fr3_dual_arm_sim')
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
-    pkg_robot_moveit = get_package_share_directory('fr3_dual_arm_moveit_config')
 
     world_path_arg = DeclareLaunchArgument(
         'world_path',
@@ -57,33 +56,10 @@ def generate_launch_description():
         output='screen'
     )
 
-    srdf_path = os.path.join(pkg_robot_moveit, 'config', 'dual_fr3.srdf')
-    with open(srdf_path, 'r') as srdf_file:
-        robot_description_semantic = {'robot_description_semantic': srdf_file.read()}
-    
-    kinematics_path = os.path.join(pkg_robot_moveit, 'config', 'kinematics.yaml')
-    with open(kinematics_path, 'r') as kin_file:
-        kinematics_yaml = yaml.safe_load(kin_file)
-    robot_description_kinematics = {'robot_description_kinematics': kinematics_yaml}
-
-    move_group_node = Node(
-        package='moveit_ros_move_group',
-        executable='move_group',
-        output='screen',
-        parameters=[
-            robot_description,
-            robot_description_semantic,
-             robot_description_kinematics,
-            {'use_sim_time': True},
-            os.path.join(pkg_robot_moveit, 'config', 'moveit_controllers.yaml'),
-        ],
-    )
-
     return LaunchDescription([
         world_path_arg,
         gz_sim,
         gz_bridge,
         robot_state_publisher,
         spawn_entity,
-        move_group_node
     ])
