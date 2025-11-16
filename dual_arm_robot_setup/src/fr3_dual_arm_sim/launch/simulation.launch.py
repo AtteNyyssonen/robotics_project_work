@@ -116,10 +116,6 @@ def generate_launch_description():
         arguments=["--ros-args", "--log-level", "info"],
     )
 
-    # --- ros2_control Controllers ---
-    # These spawner nodes will load the controllers defined in your ros2_controllers.yaml
-    # We use RegisterEventHandler to ensure they start *after* the robot is spawned.
-
     def create_spawner_node(controller_name):
         return ExecuteProcess(
             cmd=[[
