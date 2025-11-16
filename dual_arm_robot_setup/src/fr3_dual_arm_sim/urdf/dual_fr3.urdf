@@ -862,7 +862,7 @@
       <param name="version">0.1.0</param>
       <param name="arm_id">fr3</param>
       <param name="prefix">left_</param>
-      <plugin>franka_gz_ros2_control/GZSystem</plugin>
+      <plugin>gz_ros2_control/GazeboSystem</plugin>
     </hardware>
     <joint name="left_fr3_joint1">
       <!--
@@ -1000,108 +1000,7 @@
       <param name="initial_value">0.0</param>
       <state_interface name="effort"/>
     </joint>
-    <gpio name="vx">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">0</param>
-    </gpio>
-    <gpio name="vy">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">1</param>
-    </gpio>
-    <gpio name="vz">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">2</param>
-    </gpio>
-    <gpio name="wx">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">3</param>
-    </gpio>
-    <gpio name="wy">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">4</param>
-    </gpio>
-    <gpio name="wz">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">5</param>
-    </gpio>
-    <gpio name="0">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">0</param>
-    </gpio>
-    <gpio name="1">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">1</param>
-    </gpio>
-    <gpio name="2">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">2</param>
-    </gpio>
-    <gpio name="3">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">3</param>
-    </gpio>
-    <gpio name="4">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">4</param>
-    </gpio>
-    <gpio name="5">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">5</param>
-    </gpio>
-    <gpio name="6">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">6</param>
-    </gpio>
-    <gpio name="7">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">7</param>
-    </gpio>
-    <gpio name="8">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">8</param>
-    </gpio>
-    <gpio name="9">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">9</param>
-    </gpio>
-    <gpio name="10">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">10</param>
-    </gpio>
-    <gpio name="11">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">11</param>
-    </gpio>
-    <gpio name="12">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">12</param>
-    </gpio>
-    <gpio name="13">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">13</param>
-    </gpio>
-    <gpio name="14">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">14</param>
-    </gpio>
-    <gpio name="15">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">15</param>
-    </gpio>
-    <gpio name="joint_3_position">
-      <command_interface name="elbow_command"/>
-      <param name="index">0</param>
-    </gpio>
-    <gpio name="joint_4_sign">
-      <command_interface name="elbow_command"/>
-      <param name="index">1</param>
-    </gpio>
   </ros2_control>
-  <gazebo>
-    <plugin filename="franka_gz_ros2_control-system" name="gz_ros2_control::GZROS2ControlPlugin">
-      <parameters>/home/atte/franka_ros2_ws/install/franka_gazebo_bringup/share/franka_gazebo_bringup/config/franka_gazebo_controllers.yaml</parameters>
-    </plugin>
-  </gazebo>
   <joint name="right_base_to_arm_joint" type="fixed">
     <origin rpy="0 0 3.14159" xyz="-0.07 -0.5 0.84"/>
     <parent link="base"/>
@@ -1938,7 +1837,7 @@
       <param name="version">0.1.0</param>
       <param name="arm_id">fr3</param>
       <param name="prefix">right_</param>
-      <plugin>franka_gz_ros2_control/GZSystem</plugin>
+      <plugin>gz_ros2_control/GazeboSystem</plugin>
     </hardware>
     <joint name="right_fr3_joint1">
       <!--
@@ -2076,106 +1975,5 @@
       <param name="initial_value">0.0</param>
       <state_interface name="effort"/>
     </joint>
-    <gpio name="vx">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">0</param>
-    </gpio>
-    <gpio name="vy">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">1</param>
-    </gpio>
-    <gpio name="vz">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">2</param>
-    </gpio>
-    <gpio name="wx">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">3</param>
-    </gpio>
-    <gpio name="wy">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">4</param>
-    </gpio>
-    <gpio name="wz">
-      <command_interface name="cartesian_velocity"/>
-      <param name="index">5</param>
-    </gpio>
-    <gpio name="0">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">0</param>
-    </gpio>
-    <gpio name="1">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">1</param>
-    </gpio>
-    <gpio name="2">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">2</param>
-    </gpio>
-    <gpio name="3">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">3</param>
-    </gpio>
-    <gpio name="4">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">4</param>
-    </gpio>
-    <gpio name="5">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">5</param>
-    </gpio>
-    <gpio name="6">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">6</param>
-    </gpio>
-    <gpio name="7">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">7</param>
-    </gpio>
-    <gpio name="8">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">8</param>
-    </gpio>
-    <gpio name="9">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">9</param>
-    </gpio>
-    <gpio name="10">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">10</param>
-    </gpio>
-    <gpio name="11">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">11</param>
-    </gpio>
-    <gpio name="12">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">12</param>
-    </gpio>
-    <gpio name="13">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">13</param>
-    </gpio>
-    <gpio name="14">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">14</param>
-    </gpio>
-    <gpio name="15">
-      <command_interface name="cartesian_pose_command"/>
-      <param name="index">15</param>
-    </gpio>
-    <gpio name="joint_3_position">
-      <command_interface name="elbow_command"/>
-      <param name="index">0</param>
-    </gpio>
-    <gpio name="joint_4_sign">
-      <command_interface name="elbow_command"/>
-      <param name="index">1</param>
-    </gpio>
   </ros2_control>
-  <gazebo>
-    <plugin filename="franka_gz_ros2_control-system" name="gz_ros2_control::GZROS2ControlPlugin">
-      <parameters>/home/atte/franka_ros2_ws/install/franka_gazebo_bringup/share/franka_gazebo_bringup/config/franka_gazebo_controllers.yaml</parameters>
-    </plugin>
-  </gazebo>
 </robot>

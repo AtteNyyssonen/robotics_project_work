@@ -35,6 +35,14 @@ left_fr3_arm_controller:
       - left_fr3_joint5
       - left_fr3_joint6
       - left_fr3_joint7
+    gains:
+        left_fr3_joint1: {p: 600.0, i: 0.01, d: 30.0}
+        left_fr3_joint2: {p: 600.0, i: 0.01, d: 30.0}
+        left_fr3_joint3: {p: 600.0, i: 0.01, d: 30.0}
+        left_fr3_joint4: {p: 600.0, i: 0.01, d: 30.0}
+        left_fr3_joint5: {p: 250.0, i: 0.01, d: 10.0}
+        left_fr3_joint6: {p: 150.0, i: 0.01, d: 10.0}
+        left_fr3_joint7: {p: 50.0, i: 0.01, d: 5.0}
     command_interfaces:
       - position
     state_interfaces:
@@ -51,6 +59,14 @@ right_fr3_arm_controller:
       - right_fr3_joint5
       - right_fr3_joint6
       - right_fr3_joint7
+    gains:
+        right_fr3_joint1: {p: 600.0, i: 0.01, d: 30.0}
+        right_fr3_joint2: {p: 600.0, i: 0.01, d: 30.0}
+        right_fr3_joint3: {p: 600.0, i: 0.01, d: 30.0}
+        right_fr3_joint4: {p: 600.0, i: 0.01, d: 30.0}
+        right_fr3_joint5: {p: 250.0, i: 0.01, d: 10.0}
+        right_fr3_joint6: {p: 150.0, i: 0.01, d: 10.0}
+        right_fr3_joint7: {p: 50.0, i: 0.01, d: 5.0}
     command_interfaces:
       - position
     state_interfaces:
