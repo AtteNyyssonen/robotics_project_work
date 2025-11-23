@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_fr3">
+  <link name="base">
+    <visual>
+      <origin xyz="-0.1 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.9 1.6 1.68" />
+      </geometry>
+      <material name="White">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.1 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.9 1.6 1.68"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base"/>
+  </joint>
+
+  <!-- Existing include: Franka robot -->
+  <xacro:include filename="$(find franka_description)/robots/common/franka_robot.xacro" />
+  <!-- NEW: include our custom dual-arm ros2_control -->
+  <xacro:include filename="$(find fr3_dual_arm_moveit_config)/config/dual_fr3.ros2_control.xacro" />
+
+  <xacro:macro name="spawn_fr3" params="prefix *origin">
+    <joint name="${prefix}base_to_arm_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="base"/>
+      <child link="${prefix}fr3_link0"/>
+    </joint>
+    <xacro:franka_robot 
+      arm_id="fr3"
+      joint_limits="${xacro.load_yaml('$(find franka_description)/robots/fr3/joint_limits.yaml')}"
+      inertials="${xacro.load_yaml('$(find franka_description)/robots/fr3/inertials.yaml')}"
+      kinematics="${xacro.load_yaml('$(find franka_description)/robots/fr3/kinematics.yaml')}"
+      dynamics="${xacro.load_yaml('$(find franka_description)/robots/fr3/dynamics.yaml')}"
+      gazebo="true"
+      hand="true"
+      parent=""
+      ee_id="franka_hand"
+      special_connection=""
+      xyz_ee="0 0 0"
+      rpy_ee="0 0 ${-pi/4}"
+      tcp_xyz="0 0 0.1034"
+      tcp_rpy="0 0 0"
+      safety_distance="0.03"
+      with_sc="true"
+      <!-- CHANGED: disable internal Franka ros2_control -->
+      ros2_control="false"
+      robot_ip=""
+      use_fake_hardware="false"
+      fake_sensor_commands="false"
+      <!-- CHANGED: we use position controllers, so no effort mode in Gazebo -->
+      gazebo_effort="false"
+      no_prefix="false"
+      arm_prefix="${prefix}"
+      description_pkg="franka_description"
+      connected_to=""/>
+  </xacro:macro>
+
+  <xacro:spawn_fr3 prefix="left_">
+    <origin xyz="-0.07 0.4 0.84" rpy="0 0 3.14159"/> 
+  </xacro:spawn_fr3>
+
+  <xacro:spawn_fr3 prefix="right_">
+    <origin xyz="-0.07 -0.5 0.84" rpy="0 0 3.14159"/>
+  </xacro:spawn_fr3>
+
+  <!-- NEW: attach our dual-arm ros2_control system -->
+  <xacro:dual_fr3_ros2_control
+      name="dual_fr3_system"
+      initial_positions_file="$(find fr3_dual_arm_moveit_config)/config/initial_positions.yaml"/>
+
+</robot>
