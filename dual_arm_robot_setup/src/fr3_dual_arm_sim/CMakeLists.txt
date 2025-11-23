@@ -22,7 +22,12 @@ find_package(joint_trajectory_controller REQUIRED)
 find_package(moveit_simple_controller_manager REQUIRED)
 find_package(rviz2 REQUIRED)
 
-install(DIRECTORY launch worlds urdf
+install(PROGRAMS 
+  scripts/moveit_node.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY launch worlds urdf scripts
   DESTINATION share/${PROJECT_NAME}
 )
 

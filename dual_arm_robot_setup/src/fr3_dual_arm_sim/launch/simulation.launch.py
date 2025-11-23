@@ -1,13 +1,12 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler, ExecuteProcess, TimerAction
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, FindExecutable, PathJoinSubstitution, Command
+from launch.substitutions import LaunchConfiguration, FindExecutable
 from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
-from launch_ros.parameter_descriptions import ParameterValue
+
 import xacro
 import yaml
 
@@ -47,10 +46,13 @@ def generate_launch_description():
     ompl_planning_file_path = os.path.join(pkg_moveit_description, 'config', 'ompl_planning.yaml')
     with open(ompl_planning_file_path, 'r') as f:
         ompl_planning_config = yaml.safe_load(f)
-        
-    ros2_controllers_file = os.path.join(pkg_moveit_description, 'config', 'ros2_controllers.yaml')
 
     rviz_config_file = os.path.join(pkg_moveit_description, 'config', 'moveit.rviz')
+
+    joint_limits_yaml = os.path.join(pkg_moveit_description, 'config', 'joint_limits.yaml')
+    with open(joint_limits_yaml, 'r') as f:
+        joint_limits_config = yaml.safe_load(f)
+    robot_description_planning = {'robot_description_planning': joint_limits_config}
 
     gz_sim = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
@@ -71,16 +73,6 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='screen',
         parameters=[robot_description, robot_description_semantic]
-    )
-
-    controller_manager_node = Node(
-        package="controller_manager",
-        executable="ros2_control_node",
-        parameters=[
-            robot_description,
-            ros2_controllers_file,
-        ],
-        output="screen",
     )
 
     spawn_entity = Node(
@@ -112,6 +104,7 @@ def generate_launch_description():
             moveit_controllers_config,
             ompl_planning_config,
             kinematics_config_wrapped,
+            robot_description_planning,
         ],
         arguments=["--ros-args", "--log-level", "info"],
     )
@@ -137,6 +130,13 @@ def generate_launch_description():
     spawn_left_hand = create_spawner_node("left_fr3_hand_controller")
     spawn_right_hand = create_spawner_node("right_fr3_hand_controller")
 
+    spawn_jsb_event = RegisterEventHandler(
+        OnProcessExit(
+            target_action=spawn_entity,
+            on_exit=[spawn_jsb],
+        )
+    )
+
     spawn_other_controllers = RegisterEventHandler(
         OnProcessExit(
             target_action=spawn_jsb,
@@ -144,10 +144,45 @@ def generate_launch_description():
         )
     )
 
-    spawn_jsb_event = RegisterEventHandler(
+    moveit_py_params = {
+        "plan_request_params": {
+            "planning_pipeline": "ompl",
+            "planner_id": "RRTConnectkConfigDefault",
+            "planning_time": 10.0,
+            "planning_attempts": 5,
+            "max_velocity_scaling_factor": 0.1,
+            "max_acceleration_scaling_factor": 0.1,
+        }
+    }
+
+    moveit_commander_node = Node(
+        package='fr3_dual_arm_sim',
+        executable='moveit_node.py',
+        name='dual_arm_moveit_commander',
+        output='screen',
+        parameters=[
+            robot_description,
+            robot_description_semantic,
+            kinematics_config_wrapped,
+            moveit_controllers_config,
+            robot_description_planning,
+            ompl_planning_config,
+            moveit_py_params,
+            {
+                "planning_pipelines": ["ompl"],
+                "ompl": {
+                    "planning_plugin": "ompl_interface/OMPLPlanner",
+                    "request_adapters": ["default_planning_request_adapters/ResolveConstraintFrames", "default_planning_request_adapters/ValidateWorkspaceBounds", "default_planning_request_adapters/CheckStartStateBounds", "default_planning_request_adapters/CheckStartStateCollision"],
+                    "response_adapters": ["default_planning_response_adapters/AddTimeOptimalParameterization", "default_planning_response_adapters/ValidateSolution", "default_planning_response_adapters/DisplayMotionPath"],
+                }
+            },
+        ]
+    )
+
+    spawn_moveit_commander_event = RegisterEventHandler(
         OnProcessExit(
-            target_action=spawn_entity,
-            on_exit=[spawn_jsb],
+            target_action=spawn_right_hand, 
+            on_exit=[moveit_commander_node]
         )
     )
 
@@ -156,10 +191,10 @@ def generate_launch_description():
         gz_sim,
         gz_bridge,
         robot_state_publisher,
-        controller_manager_node,
         spawn_entity,
         rviz_node,
         move_group_node,
         spawn_jsb_event,
         spawn_other_controllers,
+        spawn_moveit_commander_event,
     ])

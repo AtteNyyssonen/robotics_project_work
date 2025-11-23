@@ -49,7 +49,7 @@
       tcp_rpy="0 0 0"
       safety_distance="0.03"
       with_sc="true"
-      ros2_control="true"
+      ros2_control="false"
       robot_ip=""
       use_fake_hardware="false"
       fake_sensor_commands="false"

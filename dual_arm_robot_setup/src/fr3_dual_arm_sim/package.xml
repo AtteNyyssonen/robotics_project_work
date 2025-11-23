@@ -16,6 +16,9 @@
   <depend>gazebo_ros</depend>
 
   <depend>xacro</depend>
+  <depend>ros_gz</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>ros_gz_bridge</depend>
   <depend>tf2_ros</depend>
   <depend>geometry_msgs</depend>
   <depend>std_msgs</depend>
@@ -39,6 +42,8 @@
   <depend>joint_trajectory_controller</depend>
   <depend>moveit_simple_controller_manager</depend>
   <depend>rviz2</depend>
+
+  <exec_depend>moveit_py</exec_depend>
 
   <exec_depend>spawn_entity</exec_depend>
 
