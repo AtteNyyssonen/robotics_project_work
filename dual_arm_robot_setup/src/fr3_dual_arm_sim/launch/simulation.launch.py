@@ -99,6 +99,7 @@ def generate_launch_description():
         executable="move_group",
         output="screen",
         parameters=[
+            {'use_sim_time': True},
             robot_description,
             robot_description_semantic,
             moveit_controllers_config,
@@ -161,6 +162,12 @@ def generate_launch_description():
         name='dual_arm_moveit_commander',
         output='screen',
         parameters=[
+            {'use_sim_time': True}, 
+            {'start_state_max_bounds_error': 0.1},
+            {"trajectory_execution": {
+                "allowed_start_tolerance": 0.1 
+                }
+            },
             robot_description,
             robot_description_semantic,
             kinematics_config_wrapped,
@@ -178,11 +185,15 @@ def generate_launch_description():
             },
         ]
     )
+    start_moveit_commander_delayed = TimerAction(
+        period=10.0,
+        actions=[moveit_commander_node]
+    )
 
     spawn_moveit_commander_event = RegisterEventHandler(
         OnProcessExit(
             target_action=spawn_right_hand, 
-            on_exit=[moveit_commander_node]
+            on_exit=[start_moveit_commander_delayed]
         )
     )
 
