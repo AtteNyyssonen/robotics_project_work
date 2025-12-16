@@ -12,8 +12,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint1']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint2">
@@ -21,8 +22,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint2']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint3">
@@ -30,8 +32,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint3']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint4">
@@ -39,8 +42,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint4']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint5">
@@ -48,8 +52,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint5']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint6">
@@ -57,8 +62,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint6']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint7">
@@ -66,8 +72,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint7']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint1">
@@ -75,8 +82,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint1']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint2">
@@ -84,8 +92,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint2']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint3">
@@ -93,8 +102,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint3']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint4">
@@ -102,8 +112,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint4']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint5">
@@ -111,8 +122,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint5']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint6">
@@ -120,8 +132,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint6']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint7">
@@ -129,8 +142,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint7']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_finger_joint1">
@@ -138,8 +152,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_finger_joint1']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_finger_joint1">
@@ -147,8 +162,9 @@
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_finger_joint1']}</param>
                 </state_interface>
-                <state_interface name="velocity"/>
+                <state_interface name="velocity">
                   <param name="initial_value">0.0</param>
+                </state_interface>
                 <state_interface name="effort"/>
             </joint>
 
