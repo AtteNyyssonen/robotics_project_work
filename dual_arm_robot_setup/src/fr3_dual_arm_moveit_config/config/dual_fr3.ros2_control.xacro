@@ -8,7 +8,7 @@
                 <plugin>franka_gz_ros2_control/GZSystem</plugin>
             </hardware>
             <joint name="left_fr3_joint1">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint1']}</param>
                 </state_interface>
@@ -18,7 +18,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint2">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint2']}</param>
                 </state_interface>
@@ -28,7 +28,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint3">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint3']}</param>
                 </state_interface>
@@ -38,7 +38,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint4">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint4']}</param>
                 </state_interface>
@@ -48,7 +48,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint5">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint5']}</param>
                 </state_interface>
@@ -58,7 +58,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint6">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint6']}</param>
                 </state_interface>
@@ -68,7 +68,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="left_fr3_joint7">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['left_fr3_joint7']}</param>
                 </state_interface>
@@ -78,7 +78,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint1">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint1']}</param>
                 </state_interface>
@@ -88,7 +88,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint2">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint2']}</param>
                 </state_interface>
@@ -98,7 +98,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint3">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint3']}</param>
                 </state_interface>
@@ -108,7 +108,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint4">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint4']}</param>
                 </state_interface>
@@ -118,7 +118,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint5">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint5']}</param>
                 </state_interface>
@@ -128,7 +128,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint6">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint6']}</param>
                 </state_interface>
@@ -138,7 +138,7 @@
                 <state_interface name="effort"/>
             </joint>
             <joint name="right_fr3_joint7">
-                <command_interface name="effort"/>
+                <command_interface name="position"/>
                 <state_interface name="position">
                   <param name="initial_value">${initial_positions['right_fr3_joint7']}</param>
                 </state_interface>

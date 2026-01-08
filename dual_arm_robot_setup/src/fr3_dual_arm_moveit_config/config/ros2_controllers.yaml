@@ -57,7 +57,7 @@ left_fr3_arm_controller:
         left_fr3_joint6: { p: 150., d: 10., i: 0., i_clamp: 1. }
         left_fr3_joint7: { p: 50., d: 5., i: 0., i_clamp: 1. }
     command_interfaces:
-      - effort
+      - position
     state_interfaces:
       - position
       - velocity
@@ -83,7 +83,7 @@ right_fr3_arm_controller:
         right_fr3_joint6: { p: 150., d: 10., i: 0., i_clamp: 1. }
         right_fr3_joint7: { p: 50., d: 5., i: 0., i_clamp: 1. }
     command_interfaces:
-      - effort
+      - position
     state_interfaces:
       - position
       - velocity
